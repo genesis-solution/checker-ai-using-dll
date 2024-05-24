@@ -238,9 +238,9 @@ app.post('/extract-move', (req, res) => {
       const CB_BLACK = 2;
       const CB_MAN = 4;
       const CB_KING = 8;
-
-      const playnow = { value: 1 };
-      const move = { value: 1 };
+      const CB_EXACT_TIME = 2;
+      const playnow = { value: 0 };
+      const move = { value: null };
 
       // init Checkboard data 
       let b =[];
@@ -283,7 +283,7 @@ app.post('/extract-move', (req, res) => {
         console.log("--------------- Start -------------------");
         console.table(b);
 
-        ret = getmove(b, 0, 5.0, gamestate, playnow, 0, 0, move);
+        ret = getmove(b, CB_BLACK, 5.0, gamestate, playnow, CB_EXACT_TIME, 0, move);
         
         console.log("--------------- End -------------------");
         console.table(b);
