@@ -269,9 +269,15 @@ app.post('/extract-move', (req, res) => {
         var xx = parseInt(data[index].nx);
         var yy = parseInt(data[index].ny);
         if (data[index].color == '1') {
-          b[yy][xx] = CB_BLACK | CB_MAN;     
+          if (parseInt(data[index].isKing) == 1)
+            b[yy][xx] = CB_BLACK | CB_KING;     
+          else
+            b[yy][xx] = CB_BLACK | CB_MAN;     
         } else {
-          b[yy][xx] = CB_WHITE | CB_MAN;     
+          if (parseInt(data[index].isKing) == 1)
+            b[yy][xx] = CB_WHITE | CB_KING;     
+          else
+            b[yy][xx] = CB_WHITE | CB_MAN;
         } 
       }
 
